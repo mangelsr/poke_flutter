@@ -3,6 +3,7 @@
 //     final pokemon = pokemonFromJson(jsonString);
 
 import 'dart:convert';
+import 'dart:ui';
 
 Pokemon pokemonFromJson(String str) => Pokemon.fromJson(json.decode(str));
 
@@ -46,6 +47,7 @@ class Pokemon {
   List<Stat> stats;
   List<Type> types;
   int weight;
+  Color averageColor;
 
   factory Pokemon.fromJson(Map<String, dynamic> json) => Pokemon(
         abilities: List<Ability>.from(

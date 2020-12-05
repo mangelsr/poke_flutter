@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:poke_flutter/widgets/pokemon_tile.dart';
 import 'package:poke_flutter/providers/api_provider.dart';
 
 class HomePage extends StatelessWidget {
@@ -12,15 +13,16 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         title: Text('Pokedex'),
       ),
-      body: apiProvider.pokemon.isEmpty
+      body: apiProvider.fetchedPokemon.isEmpty
           ? Center(
               child: CircularProgressIndicator(),
             )
           : ListView.builder(
-              itemCount: apiProvider.pokemon.length,
-              itemBuilder: (_, int index) => ListTile(
-                title: Text('${apiProvider.pokemon[index].name}'),
-              ),
+              itemCount: apiProvider.fetchedPokemon.length,
+              itemBuilder: (_, int index) {
+                final pokemon = apiProvider.fetchedPokemon[index];
+                return PokemonTile(pokemon: pokemon);
+              },
             ),
     );
   }

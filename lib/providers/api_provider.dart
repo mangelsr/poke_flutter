@@ -7,7 +7,7 @@ import 'package:poke_flutter/models/pokemon_list.dart';
 import 'package:poke_flutter/utils/average_color.dart';
 
 class ApiProvider with ChangeNotifier {
-  final _BASE_URL = 'https://pokeapi.co/api/v2/';
+  static const _BASE_URL = 'https://pokeapi.co/api/v2/';
 
   List<Result> pokemonResults = [];
   List<Pokemon> fetchedPokemon = [];

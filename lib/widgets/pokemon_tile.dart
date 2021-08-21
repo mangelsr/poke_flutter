@@ -12,8 +12,13 @@ class PokemonTile extends StatelessWidget {
   Widget build(BuildContext context) {
     final titleText = '#${pokemon.order} ${pokemon.name.toTitleCase()}';
     final types = pokemon.types.map((Type e) => e.type.name.toUpperCase());
+
+    final textColor = pokemon.averageColor.computeLuminance() > 0.35
+        ? Colors.black
+        : Colors.white;
+
     return Container(
-      margin: EdgeInsets.all(4.0),
+      margin: EdgeInsets.symmetric(horizontal: 8, vertical: 6),
       decoration: BoxDecoration(
         color: pokemon.averageColor,
         borderRadius: BorderRadius.all(
@@ -21,7 +26,13 @@ class PokemonTile extends StatelessWidget {
         ),
       ),
       child: ListTile(
-          title: Text(titleText),
+          title: Text(
+            titleText,
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              color: textColor,
+            ),
+          ),
           subtitle: Row(
             children: types.map((String e) => TypeBadge(e)).toList(),
           ),
@@ -33,10 +44,8 @@ class PokemonTile extends StatelessWidget {
                 bottomLeft: Radius.circular(20.0),
               ),
             ),
-            child: Expanded(
-              child: Image.network(
-                  pokemon.sprites.other.officialArtwork.frontDefault),
-            ),
+            child: Image.network(
+                pokemon.sprites.other.officialArtwork.frontDefault),
           )),
     );
   }

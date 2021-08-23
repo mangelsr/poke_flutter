@@ -1,5 +1,3 @@
 extension StringExtension on String {
-  String toTitleCase() {
-    return "${this[0].toUpperCase()}${this.substring(1)}";
-  }
+  String toTitleCase() => "${this[0].toUpperCase()}${this.substring(1)}";
 }

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
 import 'package:poke_flutter/pages/home_page.dart';
+import 'package:poke_flutter/pages/detail_page.dart';
 import 'package:poke_flutter/providers/api_provider.dart';
 
 void main() {
@@ -21,8 +23,11 @@ class PokeFlutterApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        routes: {'home': (_) => HomePage()},
-        initialRoute: 'home',
+        routes: {
+          HomePage.PAGE_NAME: (_) => HomePage(),
+          DetailPage.PAGE_NAME: (_) => DetailPage(),
+        },
+        initialRoute: HomePage.PAGE_NAME,
       ),
     );
   }

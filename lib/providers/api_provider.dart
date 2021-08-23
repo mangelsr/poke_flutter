@@ -11,6 +11,7 @@ class ApiProvider with ChangeNotifier {
 
   List<Result> pokemonResults = [];
   List<Pokemon> fetchedPokemon = [];
+  Pokemon selectedPokemon;
 
   ApiProvider() {
     getPokemonList();
@@ -48,5 +49,10 @@ class ApiProvider with ChangeNotifier {
     } catch (err) {
       throw Exception(err.toString());
     }
+  }
+
+  setSelectedPokemon(int index) {
+    selectedPokemon = fetchedPokemon[index];
+    notifyListeners();
   }
 }

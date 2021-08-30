@@ -49,19 +49,19 @@ class DetailPage extends StatelessWidget {
           items: [
             BottomNavigationBarItem(
               icon: Icon(Icons.info_outline),
-              label: 'Info',
+              label: navigationProvider.selectedTab == 0 ? 'Info' : '',
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.info),
-              label: 'Moves',
+              label: navigationProvider.selectedTab == 1 ? 'Moves' : '',
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.add),
-              label: 'More',
+              label: navigationProvider.selectedTab == 2 ? 'More' : '',
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.more_horiz),
-              label: 'Menu',
+              label: navigationProvider.selectedTab == 3 ? 'Menu' : '',
             ),
           ],
         ),

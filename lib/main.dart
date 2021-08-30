@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:poke_flutter/pages/home_page.dart';
 import 'package:poke_flutter/pages/detail_page.dart';
 import 'package:poke_flutter/providers/api_provider.dart';
+import 'package:poke_flutter/providers/navigation_provider.dart';
 
 void main() {
   runApp(PokeFlutterApp());
@@ -16,7 +17,10 @@ class PokeFlutterApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(
           create: (_) => ApiProvider(),
-        )
+        ),
+        ChangeNotifierProvider(
+          create: (_) => NavigationProvider(),
+        ),
       ],
       child: MaterialApp(
         title: 'Poke Flutter',

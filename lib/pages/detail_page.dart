@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:poke_flutter/providers/navigation_provider.dart';
+import 'package:poke_flutter/tabs/menu_tab.dart';
+import 'package:poke_flutter/tabs/more_tab.dart';
+import 'package:poke_flutter/tabs/moves_tab.dart';
 import 'package:provider/provider.dart';
 
 import 'package:poke_flutter/models/pokemon.dart';
@@ -12,7 +16,17 @@ class DetailPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final ApiProvider apiProvider = Provider.of<ApiProvider>(context);
+    final NavigationProvider navigationProvider =
+        Provider.of<NavigationProvider>(context);
+
     final Pokemon pokemon = apiProvider.selectedPokemon;
+
+    final List<Widget> tabs = [
+      InfoTab(),
+      MovesTab(),
+      MoreTab(),
+      MenuTab(),
+    ];
 
     return SafeArea(
       child: Scaffold(
@@ -21,7 +35,7 @@ class DetailPage extends StatelessWidget {
           children: [
             DetailHeader(),
             Expanded(
-              child: InfoTab(),
+              child: tabs[navigationProvider.selectedTab],
             ),
           ],
         ),
@@ -30,7 +44,8 @@ class DetailPage extends StatelessWidget {
           elevation: 0,
           type: BottomNavigationBarType.fixed,
           fixedColor: Colors.black54,
-          currentIndex: 0,
+          currentIndex: navigationProvider.selectedTab,
+          onTap: navigationProvider.changeTab,
           items: [
             BottomNavigationBarItem(
               icon: Icon(Icons.info_outline),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:poke_flutter/providers/moves_provider.dart';
 import 'package:provider/provider.dart';
 
 import 'package:poke_flutter/models/pokemon.dart';
@@ -16,6 +17,7 @@ class PokemonTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final ApiProvider apiProvider = Provider.of<ApiProvider>(context);
+    final MovesProvider movesProvider = Provider.of<MovesProvider>(context);
 
     final String titleText = '#${pokemon.order} ${pokemon.name.toTitleCase()}';
     final List<String> types =
@@ -36,6 +38,7 @@ class PokemonTile extends StatelessWidget {
           ),
           onTap: () {
             apiProvider.setSelectedPokemon(this.index);
+            movesProvider.setPokemonMoves(apiProvider.selectedPokemon);
             Navigator.pushNamed(context, DetailPage.PAGE_NAME);
           },
           title: Text(

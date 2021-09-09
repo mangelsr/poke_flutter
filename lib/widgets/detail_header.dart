@@ -28,7 +28,12 @@ class DetailHeader extends StatelessWidget {
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text(pokemon.name),
+            Text(
+              pokemon.name,
+              style: TextStyle(
+                fontSize: 20,
+              ),
+            ),
             Text('#${pokemon.id}'),
           ],
         ),

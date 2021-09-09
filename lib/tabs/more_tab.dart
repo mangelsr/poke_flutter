@@ -1,10 +1,28 @@
 import 'package:flutter/material.dart';
 
+import 'package:poke_flutter/widgets/card_title.dart';
+import 'package:poke_flutter/widgets/damage_taken_card.dart';
+import 'package:poke_flutter/widgets/locations_card.dart';
+
 class MoreTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Text('More Tab'),
+    return ListView(
+      children: [
+        SizedBox(height: 10),
+        CardTitle('Locations'),
+        LocationsCard(),
+        SizedBox(height: 10),
+        CardTitle('Damage Taken'),
+        DamageTakenCard(),
+        SizedBox(height: 10),
+        CardTitle('Sprites'),
+        LocationsCard(),
+        SizedBox(height: 10),
+        CardTitle('Traning'),
+        LocationsCard(),
+        SizedBox(height: 10),
+      ],
     );
   }
 }

@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 
 import 'package:poke_flutter/models/pokemon.dart';
 import 'package:poke_flutter/providers/api_provider.dart';
+import 'package:poke_flutter/widgets/custom_card.dart';
 
 class StatsCard extends StatelessWidget {
   @override
@@ -78,16 +79,7 @@ class StatsCard extends StatelessWidget {
       )
     ];
 
-    return Container(
-      margin: EdgeInsets.symmetric(
-        horizontal: 8,
-        vertical: 8,
-      ),
-      padding: EdgeInsets.all(8),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(10),
-      ),
+    return CustomCard(
       child: Column(
         children: statsCardContent,
       ),

@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:poke_flutter/providers/moves_provider.dart';
 import 'package:provider/provider.dart';
 
 import 'package:poke_flutter/models/pokemon.dart';
 import 'package:poke_flutter/pages/detail_page.dart';
-import 'package:poke_flutter/providers/api_provider.dart';
+import 'package:poke_flutter/providers/providers.dart';
 import 'package:poke_flutter/utils/string_extension.dart';
 import 'package:poke_flutter/widgets/type_badge.dart';
 

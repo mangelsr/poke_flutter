@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:poke_flutter/providers/moves_provider.dart';
 import 'package:provider/provider.dart';
+
+import 'package:poke_flutter/providers/moves_provider.dart';
 
 class MovesList extends StatelessWidget {
   @override

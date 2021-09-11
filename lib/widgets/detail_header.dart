@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:poke_flutter/widgets/type_badge.dart';
 import 'package:provider/provider.dart';
 
 import 'package:poke_flutter/models/pokemon.dart';
 import 'package:poke_flutter/providers/api_provider.dart';
+import 'package:poke_flutter/widgets/type_badge.dart';
 
 class DetailHeader extends StatelessWidget {
   @override

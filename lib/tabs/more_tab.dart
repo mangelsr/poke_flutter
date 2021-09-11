@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:poke_flutter/widgets/card_title.dart';
-import 'package:poke_flutter/widgets/damage_taken_card.dart';
-import 'package:poke_flutter/widgets/locations_card.dart';
+import 'package:poke_flutter/widgets/widgets.dart';
 
 class MoreTab extends StatelessWidget {
   @override

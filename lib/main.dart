@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import 'package:poke_flutter/pages/home_page.dart';
-import 'package:poke_flutter/pages/detail_page.dart';
-import 'package:poke_flutter/providers/api_provider.dart';
-import 'package:poke_flutter/providers/moves_provider.dart';
-import 'package:poke_flutter/providers/navigation_provider.dart';
+import 'package:poke_flutter/pages/pages.dart';
+import 'package:poke_flutter/providers/providers.dart';
 
 void main() {
   runApp(PokeFlutterApp());

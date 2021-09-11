@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import 'package:poke_flutter/providers/api_provider.dart';
-import 'package:poke_flutter/providers/moves_provider.dart';
+import 'package:poke_flutter/providers/providers.dart';
 
 class LearnMethodsFilter extends StatelessWidget {
   @override

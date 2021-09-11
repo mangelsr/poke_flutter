@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:poke_flutter/tabs/info_tab.dart';
 import 'package:provider/provider.dart';
+
 import 'package:poke_flutter/widgets/pokemon_tile.dart';
 import 'package:poke_flutter/providers/api_provider.dart';
 
@@ -10,11 +10,6 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final ApiProvider apiProvider = Provider.of<ApiProvider>(context);
-
-    final tabs = [
-      InfoTab(),
-    ];
-
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(

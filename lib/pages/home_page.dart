@@ -10,23 +10,21 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final ApiProvider apiProvider = Provider.of<ApiProvider>(context);
-    return SafeArea(
-      child: Scaffold(
-        appBar: AppBar(
-          title: Text('Pokedex'),
-        ),
-        body: apiProvider.fetchedPokemon.isEmpty
-            ? Center(
-                child: CircularProgressIndicator(),
-              )
-            : ListView.builder(
-                itemCount: apiProvider.fetchedPokemon.length,
-                itemBuilder: (_, int index) {
-                  final pokemon = apiProvider.fetchedPokemon[index];
-                  return PokemonTile(index: index, pokemon: pokemon);
-                },
-              ),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Pokedex'),
       ),
+      body: apiProvider.fetchedPokemon.isEmpty
+          ? Center(
+              child: CircularProgressIndicator(),
+            )
+          : ListView.builder(
+              itemCount: apiProvider.fetchedPokemon.length,
+              itemBuilder: (_, int index) {
+                final pokemon = apiProvider.fetchedPokemon[index];
+                return PokemonTile(index: index, pokemon: pokemon);
+              },
+            ),
     );
   }
 }

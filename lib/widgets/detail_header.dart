@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 
 import 'package:poke_flutter/models/pokemon.dart';
 import 'package:poke_flutter/providers/api_provider.dart';
+import 'package:poke_flutter/utils/string_extension.dart';
 import 'package:poke_flutter/widgets/type_badge.dart';
 
 class DetailHeader extends StatelessWidget {
@@ -29,16 +30,17 @@ class DetailHeader extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              pokemon.name,
+              pokemon.name.toTitleCase(),
               style: TextStyle(
                 fontSize: 20,
               ),
             ),
-            Text('#${pokemon.id}'),
+            Text('#${pokemon.order.toString().padLeft(3, '0')}'),
           ],
         ),
         subtitle: Row(
-          children: types.map((String e) => TypeBadge(e)).toList(),
+          children:
+              types.map((String e) => Expanded(child: TypeBadge(e))).toList(),
         ),
         trailing: Container(
           decoration: BoxDecoration(
@@ -48,8 +50,9 @@ class DetailHeader extends StatelessWidget {
               bottomLeft: Radius.circular(20.0),
             ),
           ),
-          child:
-              Image.network(pokemon.sprites.other.officialArtwork.frontDefault),
+          child: Image.network(
+            pokemon.sprites.other.officialArtwork.frontDefault,
+          ),
         ),
       ),
     );

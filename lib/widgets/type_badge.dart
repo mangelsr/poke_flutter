@@ -7,24 +7,28 @@ class TypeBadge extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
+    return Container(
+      padding: const EdgeInsets.all(8.0),
+      width: double.infinity,
       child: Container(
-        padding: const EdgeInsets.all(4.0),
-        child: Container(
-          decoration: BoxDecoration(
-            color: Color.fromRGBO(255, 255, 255, 0.5),
-            borderRadius: BorderRadius.all(
-              Radius.circular(10.0),
-            ),
+        decoration: BoxDecoration(
+          // color: Color.fromRGBO(255, 255, 255, 0.5),
+          borderRadius: BorderRadius.all(
+            Radius.circular(10.0),
           ),
-          child: Container(
-            padding: const EdgeInsets.all(4.0),
-            child: Text(
-              text,
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-              ),
+          border: Border.all(
+            color: Colors.black12,
+          ),
+        ),
+        child: Container(
+          padding: const EdgeInsets.all(4.0),
+          child: Text(
+            text,
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
             ),
           ),
         ),

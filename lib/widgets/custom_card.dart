@@ -14,7 +14,7 @@ class CustomCard extends StatelessWidget {
       ),
       padding: EdgeInsets.symmetric(
         vertical: 16,
-        horizontal: 8,
+        horizontal: 16,
       ),
       decoration: BoxDecoration(
         color: Colors.white,

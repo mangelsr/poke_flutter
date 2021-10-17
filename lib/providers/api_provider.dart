@@ -3,6 +3,7 @@ import 'package:http/http.dart' as http;
 
 import 'package:poke_flutter/models/pokemon.dart';
 import 'package:poke_flutter/models/pokemon_list.dart';
+import 'package:poke_flutter/models/pokemon_specie.dart';
 import 'package:poke_flutter/utils/average_color.dart';
 
 class ApiProvider with ChangeNotifier {
@@ -11,6 +12,7 @@ class ApiProvider with ChangeNotifier {
   List<Result> pokemonResults = [];
   List<Pokemon> fetchedPokemon = [];
   Pokemon selectedPokemon;
+  PokemonSpecie selectedPokemonSpecie;
 
   ApiProvider() {
     getPokemonList();
@@ -50,8 +52,18 @@ class ApiProvider with ChangeNotifier {
     }
   }
 
-  setSelectedPokemon(int index) {
+  Future<PokemonSpecie> getPokemonSpecie(Pokemon pokemon) async {
+    try {
+      final response = await http.get(pokemon.species.url);
+      return pokemonSpecieFromJson(response.body);
+    } catch (err) {
+      throw Exception(err.toString());
+    }
+  }
+
+  setSelectedPokemon(int index) async {
     selectedPokemon = fetchedPokemon[index];
+    selectedPokemonSpecie = await getPokemonSpecie(selectedPokemon);
     notifyListeners();
   }
 }

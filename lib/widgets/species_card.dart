@@ -2,14 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'package:poke_flutter/models/pokemon.dart';
+import 'package:poke_flutter/models/pokemon_specie.dart';
 import 'package:poke_flutter/providers/api_provider.dart';
 import 'package:poke_flutter/widgets/custom_card.dart';
+import 'package:poke_flutter/utils/string_extension.dart';
 
 class SpeciesCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final ApiProvider apiProvider = Provider.of<ApiProvider>(context);
     final Pokemon pokemon = apiProvider.selectedPokemon;
+    final PokemonSpecie specie = apiProvider.selectedPokemonSpecie;
+    final FlavorTextEntry textEntry = specie.flavorTextEntries[0];
 
     final double weightKilograms = pokemon.weight / 10;
     final double weightPounds = weightKilograms * 2.20462;
@@ -26,8 +30,9 @@ class SpeciesCard extends StatelessWidget {
       child: Column(
         children: [
           _SpeciesData(
-            title: 'Pokédex entry (from INSERT GAME HERE)',
-            content: 'INSERT POKEMON DESCRIPTION HERE',
+            title:
+                'Pokédex entry (from Pokémon ${textEntry.version.name.toTitleCase()})',
+            content: '${textEntry.flavorText.replaceAll('\n', '')}',
           ),
           SizedBox(height: 15),
           Row(

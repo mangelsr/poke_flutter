@@ -14,6 +14,7 @@ class ApiProvider with ChangeNotifier {
   Pokemon selectedPokemon;
   PokemonSpecie selectedPokemonSpecie;
   bool fetching = false;
+  bool fetchingSpecie = false;
 
   ApiProvider() {
     getPokemonList();
@@ -67,8 +68,17 @@ class ApiProvider with ChangeNotifier {
   }
 
   setSelectedPokemon(int index) async {
-    selectedPokemon = displayedPokemon[index];
-    selectedPokemonSpecie = await getPokemonSpecie(selectedPokemon);
-    notifyListeners();
+    try {
+      fetchingSpecie = true;
+      notifyListeners();
+      selectedPokemon = displayedPokemon[index];
+      selectedPokemonSpecie = await getPokemonSpecie(selectedPokemon);
+      notifyListeners();
+    } catch (err) {
+      throw Exception(err.toString());
+    } finally {
+      fetchingSpecie = false;
+      notifyListeners();
+    }
   }
 }

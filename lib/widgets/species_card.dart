@@ -12,8 +12,12 @@ class SpeciesCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final ApiProvider apiProvider = Provider.of<ApiProvider>(context);
     final Pokemon pokemon = apiProvider.selectedPokemon;
-    final PokemonSpecie specie = apiProvider.selectedPokemonSpecie;
-    final FlavorTextEntry textEntry = specie.flavorTextEntries[0];
+
+    FlavorTextEntry textEntry;
+    if (!apiProvider.fetchingSpecie) {
+      final PokemonSpecie specie = apiProvider.selectedPokemonSpecie;
+      textEntry = specie.flavorTextEntries[0];
+    }
 
     final double weightKilograms = pokemon.weight / 10;
     final double weightPounds = weightKilograms * 2.20462;
@@ -27,37 +31,50 @@ class SpeciesCard extends StatelessWidget {
     final String heightMetersRounded = heightMeters.toStringAsFixed(2);
 
     return CustomCard(
-      child: Column(
-        children: [
-          _SpeciesData(
-            title:
-                'Pokédex entry (from Pokémon ${textEntry.version.name.toTitleCase()})',
-            content: '${textEntry.flavorText.replaceAll('\n', '')}',
-          ),
-          SizedBox(height: 15),
-          Row(
-            children: [
-              Expanded(
-                flex: 1,
-                child: _SpeciesData(
-                  title: 'Height',
-                  content:
-                      '${heightFeetsRounded}\'${heightInches}\'\' (${heightMetersRounded} m)',
-                ),
+      child: !apiProvider.fetchingSpecie
+          ? _buildCardContent(textEntry, heightFeetsRounded, heightInches,
+              heightMetersRounded, weightPoundsRounded, weightKilogramsRounded)
+          : Center(child: CircularProgressIndicator()),
+    );
+  }
+
+  Column _buildCardContent(
+      FlavorTextEntry textEntry,
+      int heightFeetsRounded,
+      int heightInches,
+      String heightMetersRounded,
+      String weightPoundsRounded,
+      String weightKilogramsRounded) {
+    return Column(
+      children: [
+        _SpeciesData(
+          title:
+              'Pokédex entry (from Pokémon ${textEntry.version.name.toTitleCase()})',
+          content: '${textEntry.flavorText.replaceAll('\n', '')}',
+        ),
+        SizedBox(height: 15),
+        Row(
+          children: [
+            Expanded(
+              flex: 1,
+              child: _SpeciesData(
+                title: 'Height',
+                content:
+                    '${heightFeetsRounded}\'${heightInches}\'\' (${heightMetersRounded} m)',
               ),
-              SizedBox(width: 10),
-              Expanded(
-                flex: 1,
-                child: _SpeciesData(
-                  title: 'Weight',
-                  content:
-                      '${weightPoundsRounded} lbs (${weightKilogramsRounded} kg)',
-                ),
+            ),
+            SizedBox(width: 10),
+            Expanded(
+              flex: 1,
+              child: _SpeciesData(
+                title: 'Weight',
+                content:
+                    '${weightPoundsRounded} lbs (${weightKilogramsRounded} kg)',
               ),
-            ],
-          ),
-        ],
-      ),
+            ),
+          ],
+        ),
+      ],
     );
   }
 }

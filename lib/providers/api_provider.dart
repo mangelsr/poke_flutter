@@ -7,10 +7,10 @@ import 'package:poke_flutter/models/pokemon_specie.dart';
 import 'package:poke_flutter/utils/average_color.dart';
 
 class ApiProvider with ChangeNotifier {
-  static const _BASE_URL = 'https://pokeapi.co/api/v2/';
+  static const _BASE_URL = 'https://pokeapi.co/api/v2';
 
-  List<Result> pokemonResults = [];
-  List<Pokemon> fetchedPokemon = [];
+  String URL = '${_BASE_URL}/pokemon';
+  List<Pokemon> displayedPokemon = [];
   Pokemon selectedPokemon;
   PokemonSpecie selectedPokemonSpecie;
 
@@ -20,11 +20,11 @@ class ApiProvider with ChangeNotifier {
 
   getPokemonList() async {
     try {
-      final response = await http.get('${_BASE_URL}pokemon?limit=20');
+      final response = await http.get(this.URL);
       final pokemonResponse = pokemonListFromJson(response.body);
-      pokemonResults.addAll(pokemonResponse.results);
+      this.URL = pokemonResponse.next;
 
-      final pokemon = await Future.wait(pokemonResponse.results
+      final List<Pokemon> pokemon = await Future.wait(pokemonResponse.results
           .map((Result e) async => await getPokemon(e))
           .toList());
 
@@ -36,7 +36,7 @@ class ApiProvider with ChangeNotifier {
         pokemon[i].averageColor = colors[i];
       }
 
-      fetchedPokemon.addAll(pokemon);
+      displayedPokemon.addAll(pokemon);
       notifyListeners();
     } catch (err) {
       throw Exception(err.toString());
@@ -62,7 +62,7 @@ class ApiProvider with ChangeNotifier {
   }
 
   setSelectedPokemon(int index) async {
-    selectedPokemon = fetchedPokemon[index];
+    selectedPokemon = displayedPokemon[index];
     selectedPokemonSpecie = await getPokemonSpecie(selectedPokemon);
     notifyListeners();
   }

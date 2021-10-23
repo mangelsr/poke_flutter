@@ -13,6 +13,7 @@ class ApiProvider with ChangeNotifier {
   List<Pokemon> displayedPokemon = [];
   Pokemon selectedPokemon;
   PokemonSpecie selectedPokemonSpecie;
+  bool fetching = false;
 
   ApiProvider() {
     getPokemonList();
@@ -20,6 +21,8 @@ class ApiProvider with ChangeNotifier {
 
   getPokemonList() async {
     try {
+      fetching = true;
+      notifyListeners();
       final response = await http.get(this.URL);
       final pokemonResponse = pokemonListFromJson(response.body);
       this.URL = pokemonResponse.next;
@@ -37,9 +40,11 @@ class ApiProvider with ChangeNotifier {
       }
 
       displayedPokemon.addAll(pokemon);
-      notifyListeners();
     } catch (err) {
       throw Exception(err.toString());
+    } finally {
+      fetching = false;
+      notifyListeners();
     }
   }
 

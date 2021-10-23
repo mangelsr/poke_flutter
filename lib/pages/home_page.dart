@@ -47,6 +47,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Pokedex'),
+        bottom: _buildProgressIndicator(apiProvider),
       ),
       body: apiProvider.displayedPokemon.isEmpty
           ? Center(
@@ -62,4 +63,12 @@ class _HomePageState extends State<HomePage> {
             ),
     );
   }
+
+  Widget _buildProgressIndicator(ApiProvider apiProvider) =>
+      apiProvider.fetching && apiProvider.displayedPokemon.isNotEmpty
+          ? PreferredSize(
+              preferredSize: Size(double.infinity, 1.0),
+              child: LinearProgressIndicator(),
+            )
+          : null;
 }

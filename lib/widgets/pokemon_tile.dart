@@ -17,6 +17,7 @@ class PokemonTile extends StatelessWidget {
   Widget build(BuildContext context) {
     final ApiProvider apiProvider = Provider.of<ApiProvider>(context);
     final MovesProvider movesProvider = Provider.of<MovesProvider>(context);
+    final ThemeProvider themeProvider = Provider.of<ThemeProvider>(context);
 
     final String titleText =
         '#${pokemon.order.toString().padLeft(3, '0')} ${pokemon.name.toTitleCase()}';
@@ -38,6 +39,7 @@ class PokemonTile extends StatelessWidget {
         ),
         onTap: () {
           apiProvider.setSelectedPokemon(this.index);
+          themeProvider.changeTheme(apiProvider.selectedPokemon.averageColor);
           movesProvider.setPokemonMoves(apiProvider.selectedPokemon);
           Navigator.pushNamed(context, DetailPage.PAGE_NAME);
         },

@@ -11,11 +11,8 @@ class DetailPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final ApiProvider apiProvider = Provider.of<ApiProvider>(context);
     final NavigationProvider navigationProvider =
         Provider.of<NavigationProvider>(context);
-
-    final Pokemon pokemon = apiProvider.selectedPokemon;
 
     final List<Widget> tabs = [
       InfoTab(),
@@ -25,7 +22,7 @@ class DetailPage extends StatelessWidget {
     ];
 
     return Scaffold(
-      backgroundColor: pokemon.averageColor,
+      backgroundColor: Theme.of(context).primaryColor,
       body: SafeArea(
         child: Column(
           children: [
@@ -37,7 +34,7 @@ class DetailPage extends StatelessWidget {
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: pokemon.averageColor,
+        backgroundColor: Theme.of(context).primaryColor,
         elevation: 0,
         type: BottomNavigationBarType.fixed,
         fixedColor: Colors.black54,

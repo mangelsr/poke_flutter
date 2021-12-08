@@ -11,5 +11,6 @@ export 'package:poke_flutter/widgets/moves_list.dart';
 export 'package:poke_flutter/widgets/navigation_card.dart';
 export 'package:poke_flutter/widgets/pokemon_tile.dart';
 export 'package:poke_flutter/widgets/species_card.dart';
+export 'package:poke_flutter/widgets/sprites_card.dart';
 export 'package:poke_flutter/widgets/stats_card.dart';
 export 'package:poke_flutter/widgets/type_badge.dart';

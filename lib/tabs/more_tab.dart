@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'package:poke_flutter/widgets/widgets.dart';
 
 class MoreTab extends StatelessWidget {
@@ -15,7 +14,7 @@ class MoreTab extends StatelessWidget {
         DamageTakenCard(),
         SizedBox(height: 10),
         CardTitle('Sprites'),
-        LocationsCard(),
+        SpritesCard(),
         SizedBox(height: 10),
         CardTitle('Traning'),
         LocationsCard(),

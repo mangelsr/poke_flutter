@@ -5,8 +5,8 @@ import 'package:poke_flutter/providers/providers.dart';
 import 'package:poke_flutter/tabs/tabs.dart';
 import 'package:poke_flutter/widgets/detail_header.dart';
 
-class DetailPage extends StatelessWidget {
-  static const PAGE_NAME = 'Detail';
+class PokemonDetailPage extends StatelessWidget {
+  static const PAGE_NAME = 'Pokemon Detail';
 
   @override
   Widget build(BuildContext context) {

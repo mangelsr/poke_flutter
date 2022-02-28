@@ -19,6 +19,9 @@ void main() {
       ChangeNotifierProvider(
         create: (_) => ThemeProvider(),
       ),
+      ChangeNotifierProvider(
+        create: (_) => DrawerProvider(),
+      ),
     ],
     child: PokeFlutterApp(),
   ));
@@ -32,10 +35,10 @@ class PokeFlutterApp extends StatelessWidget {
       title: 'Poke Flutter',
       theme: themeProvider.actualTheme,
       routes: {
-        HomePage.PAGE_NAME: (_) => HomePage(),
-        DetailPage.PAGE_NAME: (_) => DetailPage(),
+        MainPage.PAGE_NAME: (_) => MainPage(),
+        PokemonDetailPage.PAGE_NAME: (_) => PokemonDetailPage(),
       },
-      initialRoute: HomePage.PAGE_NAME,
+      initialRoute: MainPage.PAGE_NAME,
     );
   }
 }

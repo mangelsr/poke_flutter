@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'package:poke_flutter/models/pokemon.dart';
-import 'package:poke_flutter/pages/detail_page.dart';
+import 'package:poke_flutter/pages/pokemon_detail_page.dart';
 import 'package:poke_flutter/providers/providers.dart';
 import 'package:poke_flutter/utils/string_extension.dart';
 import 'package:poke_flutter/widgets/type_badge.dart';
@@ -41,7 +41,7 @@ class PokemonTile extends StatelessWidget {
           apiProvider.setSelectedPokemon(this.index);
           themeProvider.changeTheme(apiProvider.selectedPokemon.averageColor);
           movesProvider.setPokemonMoves(apiProvider.selectedPokemon);
-          Navigator.pushNamed(context, DetailPage.PAGE_NAME);
+          Navigator.pushNamed(context, PokemonDetailPage.PAGE_NAME);
         },
         title: Text(
           titleText,

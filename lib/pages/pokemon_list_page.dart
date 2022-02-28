@@ -1,17 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:poke_flutter/layout/custom_drawer.dart';
 import 'package:provider/provider.dart';
 
 import 'package:poke_flutter/widgets/pokemon_tile.dart';
 import 'package:poke_flutter/providers/api_provider.dart';
 
-class HomePage extends StatefulWidget {
-  static const PAGE_NAME = 'Home';
+class PokemonListPage extends StatefulWidget {
+  static const PAGE_NAME = 'Pokemon List';
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<PokemonListPage> createState() => _PokemonListPageState();
+
+  @override
+  String toStringShort() {
+    return 'Pokédex';
+  }
 }
 
-class _HomePageState extends State<HomePage> {
+class _PokemonListPageState extends State<PokemonListPage> {
   ScrollController _scrollController;
   bool loading = false;
 
@@ -45,10 +51,10 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     ApiProvider apiProvider = Provider.of<ApiProvider>(context);
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Pokedex'),
-        bottom: _buildProgressIndicator(apiProvider),
-      ),
+      // appBar: AppBar(
+      //   title: Text('Pokedex'),
+      //   bottom: _buildProgressIndicator(apiProvider),
+      // ),
       body: apiProvider.displayedPokemon.isEmpty
           ? Center(
               child: CircularProgressIndicator(),

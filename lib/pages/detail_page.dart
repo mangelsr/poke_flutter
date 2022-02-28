@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import 'package:poke_flutter/models/pokemon.dart';
 import 'package:poke_flutter/providers/providers.dart';
 import 'package:poke_flutter/tabs/tabs.dart';
 import 'package:poke_flutter/widgets/detail_header.dart';

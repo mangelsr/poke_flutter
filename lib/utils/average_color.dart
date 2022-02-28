@@ -1,5 +1,6 @@
 import 'dart:ui';
-import 'package:flutter/widgets.dart';
+import 'package:flutter/painting.dart';
+
 import 'package:palette_generator/palette_generator.dart';
 
 Future<Color> getImagePalette(ImageProvider imageProvider) async {

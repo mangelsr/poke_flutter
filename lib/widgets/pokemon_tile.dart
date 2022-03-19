@@ -20,7 +20,7 @@ class PokemonTile extends StatelessWidget {
     final ThemeProvider themeProvider = Provider.of<ThemeProvider>(context);
 
     final String titleText =
-        '#${pokemon.order.toString().padLeft(3, '0')} ${pokemon.name.toTitleCase()}';
+        '${pokemon.orderNumber} ${pokemon.name.toTitleCase()}';
     final List<String> types =
         pokemon.types.map((Type e) => e.type.name.toUpperCase()).toList();
 

@@ -49,6 +49,8 @@ class Pokemon {
   int weight;
   Color averageColor;
 
+  String get orderNumber => '#${this.order.toString().padLeft(3, '0')}';
+
   factory Pokemon.fromJson(Map<String, dynamic> json) => Pokemon(
         abilities: List<Ability>.from(
             json["abilities"].map((x) => Ability.fromJson(x))),

@@ -35,7 +35,7 @@ class DetailHeader extends StatelessWidget {
                 fontSize: 20,
               ),
             ),
-            Text('#${pokemon.order.toString().padLeft(3, '0')}'),
+            Text(pokemon.orderNumber),
           ],
         ),
         subtitle: Row(
